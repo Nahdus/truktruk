@@ -60,6 +60,9 @@ function preload ()
 }
 
 function create(){
+    this.input.addPointer(1);
+
+    //add touch controls for mobile devices
 
     //load audio
     var spritemap = this.cache.json.get('sfx').spritemap;
@@ -257,7 +260,7 @@ function create(){
 
 
 function update(){
-
+     console.log(this.input.pointer1.x)
     // play sound
     
     // this.sound.playAudioSprite('sfx', 'numkey');
@@ -266,8 +269,9 @@ function update(){
       player.setVelocityX(0);
     if (!playerDead)  {
 
-        if (cursors.right.isDown)
+        if (cursors.right.isDown||(this.input.pointer1.isDown && this.input.pointer1.x>window.innerWidth/2))
       {
+          
           player.setVelocityX(160);
           if (player.flipX==0){
               player.flipX=-1
@@ -276,9 +280,9 @@ function update(){
            player.anims.play('move', true);
           
       }
-      if (cursors.left.isDown && !cursors.right.isDown && !spacebar.isDown && !playerDead)
+      if ((cursors.left.isDown||(this.input.pointer1.isDown && this.input.pointer1.x<window.innerWidth/2)&&!(this.input.pointer1.x===0)) && !cursors.right.isDown && !spacebar.isDown && !playerDead)
       {
-          
+        
           if (player.flipX==-1){
               player.flipX=0
             }
@@ -286,13 +290,13 @@ function update(){
           // player.setVelocityY(-100)
   
            player.anims.play('move', true);
-      }if(!cursors.right.isDown && !cursors.left.isDown && !spacebar.isDown && !playerDead){
+      }if(!(cursors.right.isDown || (this.input.pointer1.x>window.innerWidth/2 && this.input.pointer1.isDown)) && !(cursors.left.isDown || (this.input.pointer1.x<window.innerWidth/2 && this.input.pointer1.x!==0 && this.input.pointer1.isDown)) && !spacebar.isDown && !playerDead){
           // player.anims.play('still', true);
           // console.log('idle')
           player.anims.play('still', true);
             
       }
-      if(spacebar.isDown ){
+      if(spacebar.isDown||(this.input.pointer1.isDown && this.input.pointer2.isDown) ){
           var bullet = bullets.get();
           // console.log(bullet)
           player.anims.play('attack', true)
