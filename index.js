@@ -230,13 +230,18 @@ class intro extends Phaser.Scene {
             console.log(text)
             text.setOrigin(0.5, 0.5);
             text.setFontSize("50px")
+            this.input.on('pointerup',()=>{
+                console.log('clicked')
+                playerDead=false
+                this.scene.start('intro')
+            }, this)
             // text.setScale(8)
     
         }, this)
     
     }
     update(){
-        // console.log(this.input.pointer1.x)
+        
        
        this.heart.anims.play('beat',true)
        this.player.setVelocityX(0);
@@ -244,7 +249,7 @@ class intro extends Phaser.Scene {
    
            if (this.cursors.right.isDown||(this.input.pointer1.isDown && this.input.pointer1.x>window.innerWidth/2))
          {
-             
+             console.log("right")
             this.player.setVelocityX(160);
              if (this.player.flipX==0){
                 this.player.flipX=-1
