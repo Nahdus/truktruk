@@ -247,7 +247,7 @@ class intro extends Phaser.Scene {
        this.player.setVelocityX(0);
        if (!playerDead)  {
    
-           if (this.cursors.right.isDown || (this.input.pointer1.x>window.innerWidth/2 && this.input.pointer1.isDown) )
+           if (this.cursors.right.isDown || (this.input.pointer1.x>window.innerWidth/2 && this.input.pointer1.isDown && !this.input.pointer2.isDown) )
          {
              
             this.player.setVelocityX(160);
@@ -258,7 +258,7 @@ class intro extends Phaser.Scene {
              this.player.anims.play('move', true);
              
          }
-        else if (this.cursors.left.isDown||(this.input.pointer1.isDown && this.input.pointer1.x<window.innerWidth/2) )
+        else if (this.cursors.left.isDown||(this.input.pointer1.isDown && this.input.pointer1.x<window.innerWidth/2 && !this.input.pointer2.isDown) )
          {
            
              if (this.player.flipX==-1){
