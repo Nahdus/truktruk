@@ -269,7 +269,7 @@ class intro extends Phaser.Scene {
      
              this.player.anims.play('move', true);
          }
-         else if((!this.cursors.right.isDown && !this.cursors.left.isDown || ( !this.input.pointer1.isDown && !this.input.pointer2.isDown))&& !this.spacebar.isDown ){
+         else if((!this.cursors.right.isDown && !this.cursors.left.isDown && ( !this.input.pointer1.isDown && !this.input.pointer2.isDown))&& !this.spacebar.isDown ){
              // player.anims.play('still', true);
              // console.log('idle')
              this.player.anims.play('still', true);
