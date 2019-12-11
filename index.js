@@ -247,7 +247,7 @@ class intro extends Phaser.Scene {
        this.player.setVelocityX(0);
        if (!playerDead)  {
    
-           if (this.cursors.right.isDown &&  !this.spacebar.isDown && !playerDead ||(this.input.pointer1.isDown && this.input.pointer1.x>window.innerWidth/2))
+           if (this.cursors.right.isDown &&  !this.spacebar.isDown && !playerDead ||(this.input.pointer1.isDown && this.input.pointer1.x>window.innerWidth/2 && !this.input.pointer2.isDown))
          {
              console.log("right")
             this.player.setVelocityX(160);
